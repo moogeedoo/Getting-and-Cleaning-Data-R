@@ -8,9 +8,9 @@ Project Contents
 -------------------------
 
 This repository contains 4 different attachment regarding the project
-1. TidyA.R - this file containing the code chunks which performs the operation
+1. run_analysis.R - this file containing the code chunks which performs the operation
 2. codebook.md - A descriptive file for variable
-3. TidyA.txt - the Tidy output file
+3. tidy_data.txt - the Tidy output file
 4. Readme.md - this is a brief explanation of the Requirements and the Code
 
 

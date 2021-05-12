@@ -1,276 +1,183 @@
-<!DOCTYPE HTML>
-<html>
 
-<head>
-    <meta charset="utf-8">
-
-    <title>codebook.md (editing)</title>
-    <link id="favicon" rel="shortcut icon" type="image/x-icon" href="/static/base/images/favicon-file.ico?v=e2776a7f45692c839d6eea7d7ff6f3b2">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="/static/components/jquery-ui/themes/smoothness/jquery-ui.min.css?v=3c2a865c832a1322285c55c6ed99abb2" type="text/css" />
-    <link rel="stylesheet" href="/static/components/jquery-typeahead/dist/jquery.typeahead.min.css?v=9df10041c3e07da766e7c48dd4c35e4a" type="text/css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    
-<link rel="stylesheet" href="/static/components/codemirror/lib/codemirror.css?v=1623ab0774d4d8dd3cca2f42deb63dea">
-<link rel="stylesheet" href="/static/components/codemirror/addon/dialog/dialog.css?v=c89dce10b44d2882a024e7befc2b63f5">
-
-    <link rel="stylesheet" href="/static/style/style.min.css?v=321d76aeb19982a565773cf9f9c8f1d0" type="text/css"/>
-    
-
-    <link rel="stylesheet" href="/custom/custom.css" type="text/css" />
-    <script src="/static/components/es6-promise/promise.min.js?v=f004a16cb856e0ff11781d01ec5ca8fe" type="text/javascript" charset="utf-8"></script>
-    <script src="/static/components/react/react.production.min.js?v=34f96ffc962a7deecc83037ccb582b58" type="text/javascript"></script>
-    <script src="/static/components/react/react-dom.production.min.js?v=b14d91fb641317cda38dbc9dbf985ab4" type="text/javascript"></script>
-    <script src="/static/components/create-react-class/index.js?v=94feb9971ce6d26211729abc43f96cd2" type="text/javascript"></script>
-    <script src="/static/components/requirejs/require.js?v=951f856e81496aaeec2e71a1c2c0d51f" type="text/javascript" charset="utf-8"></script>
-    <script>
-      require.config({
-          
-          urlArgs: "v=20210512014538",
-          
-          baseUrl: '/static/',
-          paths: {
-            'auth/js/main': 'auth/js/main.min',
-            custom : '/custom',
-            nbextensions : '/nbextensions',
-            kernelspecs : '/kernelspecs',
-            underscore : 'components/underscore/underscore-min',
-            backbone : 'components/backbone/backbone-min',
-            jed: 'components/jed/jed',
-            jquery: 'components/jquery/jquery.min',
-            json: 'components/requirejs-plugins/src/json',
-            text: 'components/requirejs-text/text',
-            bootstrap: 'components/bootstrap/dist/js/bootstrap.min',
-            bootstraptour: 'components/bootstrap-tour/build/js/bootstrap-tour.min',
-            'jquery-ui': 'components/jquery-ui/jquery-ui.min',
-            moment: 'components/moment/min/moment-with-locales',
-            codemirror: 'components/codemirror',
-            termjs: 'components/xterm.js/xterm',
-            typeahead: 'components/jquery-typeahead/dist/jquery.typeahead.min',
-          },
-          map: { // for backward compatibility
-              "*": {
-                  "jqueryui": "jquery-ui",
-              }
-          },
-          shim: {
-            typeahead: {
-              deps: ["jquery"],
-              exports: "typeahead"
-            },
-            underscore: {
-              exports: '_'
-            },
-            backbone: {
-              deps: ["underscore", "jquery"],
-              exports: "Backbone"
-            },
-            bootstrap: {
-              deps: ["jquery"],
-              exports: "bootstrap"
-            },
-            bootstraptour: {
-              deps: ["bootstrap"],
-              exports: "Tour"
-            },
-            "jquery-ui": {
-              deps: ["jquery"],
-              exports: "$"
-            }
-          },
-          waitSeconds: 30,
-      });
-
-      require.config({
-          map: {
-              '*':{
-                'contents': 'services/contents',
-              }
-          }
-      });
-
-      // error-catching custom.js shim.
-      define("custom", function (require, exports, module) {
-          try {
-              var custom = require('custom/custom');
-              console.debug('loaded custom.js');
-              return custom;
-          } catch (e) {
-              console.error("error loading custom.js", e);
-              return {};
-          }
-      })
-
-    document.nbjs_translations = {"domain": "nbjs", "locale_data": {"nbjs": {"": {"domain": "nbjs"}}}};
-    document.documentElement.lang = navigator.language.toLowerCase();
-    </script>
-
-    
-    
-
-</head>
-
-<body class="edit_app "
- 
-data-base-url="/"
-data-file-path="codebook.md"
-
-  
-    data-jupyter-api-token="44a9fa8ac4d8b358ace3e097184e38b4d5686181e00e3c2e"
-  
- 
-
-dir="ltr">
-
-<noscript>
-    <div id='noscript'>
-      Jupyter Notebook requires JavaScript.<br>
-      Please enable it to proceed. 
-  </div>
-</noscript>
-
-<div id="header" role="navigation" aria-label="Top Menu">
-  <div id="header-container" class="container">
-  <div id="ipython_notebook" class="nav navbar-brand"><a href="/tree?token=44a9fa8ac4d8b358ace3e097184e38b4d5686181e00e3c2e" title='dashboard'>
-      <img src='/static/base/images/logo.png?v=641991992878ee24c6f3826e81054a0f' alt='Jupyter Notebook'/>
-  </a></div>
-
-  
-
-<span id="save_widget" class="pull-left save_widget">
-    <span class="filename"></span>
-    <span class="last_modified"></span>
-</span>
+Title: "Getting and Cleaning a Data"
+Author: "Mohamed Maguid"
+Date: May 12, 2021
 
 
-  
-
-  
-  
-  
-  
-
-    <span id="login_widget">
-      
-        <button id="logout" class="btn btn-sm navbar-btn">Logout</button>
-      
-    </span>
-
-  
-
-  
-  
-  </div>
-  <div class="header-bar"></div>
-
-  
-
-<div id="menubar-container" class="container">
-  <div id="menubar">
-    <div id="menus" class="navbar navbar-default" role="navigation">
-      <div class="container-fluid">
-          <p  class="navbar-text indicator_area">
-          <span id="current-mode" >current mode</span>
-          </p>
-        <button type="button" class="btn btn-default navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <i class="fa fa-bars"></i>
-          <span class="navbar-text">Menu</span>
-        </button>
-        <ul class="nav navbar-nav navbar-right">
-          <li id="notification_area"></li>
-        </ul>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">File</a>
-              <ul id="file-menu" class="dropdown-menu">
-                <li id="new-file"><a href="#">New</a></li>
-                <li id="save-file"><a href="#">Save</a></li>
-                <li id="rename-file"><a href="#">Rename</a></li>
-                <li id="download-file"><a href="#">Download</a></li>
-              </ul>
-            </li>
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit</a>
-              <ul id="edit-menu" class="dropdown-menu">
-                <li id="menu-find"><a href="#">Find</a></li>
-                <li id="menu-replace"><a href="#">Find &amp; Replace</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Key Map</li>
-                <li id="menu-keymap-default"><a href="#">Default<i class="fa"></i></a></li>
-                <li id="menu-keymap-sublime"><a href="#">Sublime Text<i class="fa"></i></a></li>
-                <li id="menu-keymap-vim"><a href="#">Vim<i class="fa"></i></a></li>
-                <li id="menu-keymap-emacs"><a href="#">emacs<i class="fa"></i></a></li>
-              </ul>
-            </li>
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">View</a>
-              <ul id="view-menu" class="dropdown-menu">
-              <li id="toggle_header" title="Show/Hide the logo and notebook title (above menu bar)">
-              <a href="#">Toggle Header</a></li>
-              <li id="menu-line-numbers"><a href="#">Toggle Line Numbers</a></li>
-              </ul>
-            </li>
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Language</a>
-              <ul id="mode-menu" class="dropdown-menu">
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="lower-header-bar"></div>
+The final summary tidyA dataset "TidyA.csv" contains the average of each variable for each activity and each subject from the Human Activity Recognition Using Smartphones Data Set
 
 
-</div>
+Description
+--------------
+Data in dataset contains header Row + 180 rows and 68 columns for
 
-<div id="site">
+•mean(): Mean value
 
-
-<div id="texteditor-backdrop">
-<div id="texteditor-container" class="container"></div>
-</div>
-
-
-</div>
+•std(): Standard deviation
 
 
 
+Identifiers
+--------------
+The base data is grouped by the following values to build mean value and the standard deviation std()
+
+•subject - The ID of the test subject
+
+•activity - The type of activity performed when the corresponding measurements were taken
 
 
 
-    
+The 30 subject are numbered sequentially from 1 to 30. Activity column has 6 types as listed below
+
+Activity
+-----------
+1- WALKING
+
+2- WALKING_UPSTAIRS
+
+3- WALKING_DOWNSTAIRS
+
+4- SITTING
+
+5- STANDING
+
+6- LAYING
 
 
-<script src="/static/edit/js/main.min.js?v=315e0382c28d43bf1007a5c2bd451d92" type="text/javascript" charset="utf-8"></script>
+Measurements of the tidyA dataset
+------------------------------------
+1- Subject
 
+2- Activity
 
-<script type='text/javascript'>
-  function _remove_token_from_url() {
-    if (window.location.search.length <= 1) {
-      return;
-    }
-    var search_parameters = window.location.search.slice(1).split('&');
-    for (var i = 0; i < search_parameters.length; i++) {
-      if (search_parameters[i].split('=')[0] === 'token') {
-        // remote token from search parameters
-        search_parameters.splice(i, 1);
-        var new_search = '';
-        if (search_parameters.length) {
-          new_search = '?' + search_parameters.join('&');
-        }
-        var new_url = window.location.origin + 
-                      window.location.pathname + 
-                      new_search + 
-                      window.location.hash;
-        window.history.replaceState({}, "", new_url);
-        return;
-      }
-    }
-  }
-  _remove_token_from_url();
-</script>
-</body>
+3- timeBodyAcc-mean()-X
 
-</html>
+4- timeBodyAcc-mean()-Y
+
+5- timeBodyAcc-mean()-Z
+
+6- timeBodyAcc-std()-X
+
+7- timeBodyAcc-std()-Y
+
+8- timeBodyAcc-std()-Z
+
+9- timeGravityAcc-mean()-X
+
+10- timeGravityAcc-mean()-Y
+
+11- timeGravityAcc-mean()-Z
+
+12- timeGravityAcc-std()-X
+
+13- timeGravityAcc-std()-Y
+
+14- timeGravityAcc-std()-Z
+
+15- timeBodyAccJerk-mean()-X
+
+16- timeBodyAccJerk-mean()-Y
+
+17- timeBodyAccJerk-mean()-Z
+
+18- timeBodyAccJerk-std()-X
+
+19- timeBodyAccJerk-std()-Y
+
+20- timeBodyAccJerk-std()-Z
+
+21- timeBodyGyro-mean()-X
+
+22- timeBodyGyro-mean()-Y
+
+23- timeBodyGyro-mean()-Z
+
+24- timeBodyGyro-std()-X
+
+25- timeBodyGyro-std()-Y
+
+26- timeBodyGyro-std()-Z
+
+27- timeBodyGyroJerk-mean()-X
+
+28- timeBodyGyroJerk-mean()-Y
+
+29- timeBodyGyroJerk-mean()-Z
+
+30- timeBodyGyroJerk-std()-X
+
+31- timeBodyGyroJerk-std()-Y
+
+32- timeBodyGyroJerk-std()-Z
+
+33- timeBodyAccMag-mean()
+
+34- timeBodyAccMag-std()
+
+35- timeGravityAccMag-mean()
+
+36- timeGravityAccMag-std()
+
+37- timeBodyAccJerkMag-mean()
+
+38- timeBodyAccJerkMag-std()
+
+39- timeBodyGyroMag-mean()
+
+40- timeBodyGyroMag-std()
+
+41- timeBodyGyroJerkMag-mean()
+
+42- timeBodyGyroJerkMag-std()
+
+43- frequencyBodyAcc-mean()-X
+
+44- frequencyBodyAcc-mean()-Y
+
+45- frequencyBodyAcc-mean()-Z
+
+46- frequencyBodyAcc-std()-X
+
+47- frequencyBodyAcc-std()-Y
+
+48- frequencyBodyAcc-std()-Z
+
+49- frequencyBodyAccJerk-mean()-X
+
+50- frequencyBodyAccJerk-mean()-Y
+
+51- frequencyBodyAccJerk-mean()-Z
+
+52- frequencyBodyAccJerk-std()-X
+
+53- frequencyBodyAccJerk-std()-Y
+
+54- frequencyBodyAccJerk-std()-Z
+
+55- frequencyBodyGyro-mean()-X
+
+56- frequencyBodyGyro-mean()-Y
+
+57- frequencyBodyGyro-mean()-Z
+
+58- frequencyBodyGyro-std()-X
+
+59- frequencyBodyGyro-std()-Y
+
+60- frequencyBodyGyro-std()-Z
+
+61- frequencyBodyAccMag-mean()
+
+62- frequencyBodyAccMag-std()
+
+63- frequencyBodyBodyAccJerkMag-mean()
+
+64- frequencyBodyBodyAccJerkMag-std()
+
+65- frequencyBodyBodyGyroMag-mean()
+
+66- frequencyBodyBodyGyroMag-std()
+
+67- frequencyBodyBodyGyroJerkMag-mean()
+
+68- frequencyBodyBodyGyroJerkMag-std()

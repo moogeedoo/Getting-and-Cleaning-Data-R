@@ -74,9 +74,20 @@ names(DATA)
 
 ##independent tidyA dataset will be created with the average of each variable for each activity and each subject based on the data set in step 4
 ##Install library(plyr)
-install.packages("plyr", dependencies=T)
+packages = c("plyr")
+
+
+package.check <- lapply(
+  packages,
+  FUN = function(x) {
+    if (!require(x, character.only = TRUE)) {
+      install.packages(x, dependencies = TRUE)
+      library(x, character.only = TRUE)
+    }
+  }
+)
+
 require("plyr")
 DATA2 <- aggregate(.~Subject + Activity, DATA, mean)
 DATA2 <- DATA2[order(DATA2$Subject, DATA2$Activity),]
 write.table(DATA2, file = "tidydata.txt", row.names = FALSE)
-

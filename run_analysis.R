@@ -78,5 +78,5 @@ install.packages("plyr", dependencies=T)
 require("plyr")
 DATA2 <- aggregate(.~Subject + Activity, DATA, mean)
 DATA2 <- DATA2[order(DATA2$Subject, DATA2$Activity),]
-write.table(DATA2, file = "tidyA.txt", row.names = FALSE)
+write.table(DATA2, file = "tidy_data.txt", row.names = FALSE)
 

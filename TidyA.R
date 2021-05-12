@@ -78,10 +78,5 @@ install.packages("plyr", dependencies=T)
 require("plyr")
 DATA2 <- aggregate(.~Subject + Activity, DATA, mean)
 DATA2 <- DATA2[order(DATA2$Subject, DATA2$Activity),]
-##Save my Clean CSV File
-write.csv(DATA2, file = "tidyA.csv", row.names = FALSE)
-tidy <- read.csv("tidyA.csv")
-##Read CSV head
-head(tidy)
-
+write.table(DATA2, file = "tidyA.txt", row.names = FALSE)
 

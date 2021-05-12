@@ -4,7 +4,7 @@ Author: "Mohamed Maguid"
 Date: May 12, 2021
 
 
-The final summary tidyA dataset "TidyA.csv" contains the average of each variable for each activity and each subject from the Human Activity Recognition Using Smartphones Data Set
+The final summary tidyA dataset "TidyA.txt" contains the average of each variable for each activity and each subject from the Human Activity Recognition Using Smartphones Data Set
 
 
 Description
